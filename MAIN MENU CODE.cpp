@@ -2,6 +2,9 @@
 
 using namespace std;
 
+void showMainMenu();
+void showFileDetail();
+
 int main() {
 	
     int choice;
@@ -32,12 +35,21 @@ int main() {
     } while (choice != 4);
 }
 
-int main () {
-	int choice;
+
+
+void showFileListMenu() {
+	int FileChoice;
 
 	do {
 		cout << "LIST FILL DETAIL\n";
-		cout << "
+		cout << "------------------\n";
+		cout << "1. List All Files\n";
+		cout << "2. List of Extension Files\n";
+		cout << "3. List of Nane Wise\n";
+		cout << "Enter the Number: \n";
+		cin >> choice;
+
+		
 
 
 	
