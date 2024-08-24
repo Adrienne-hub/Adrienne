@@ -7,9 +7,9 @@ int main() {
     int choice;
 
     do {
-        cout << "--------------------------\n";
-        cout <<        "MAIN MENU\n";
-        cout << "--------------------------\n";
+        cout << "--------------------\n";
+        cout << "MAIN MENU\n";
+        cout << "--------------------\n";
         cout << "1. To Display List of Files\n";
         cout << "2. To Create New Directory\n";
         cout << "3. To Change the Working Directory\n";
@@ -23,13 +23,24 @@ int main() {
             cout << "Creating new directory...\n";
         } else if (choice == 3) {
             cout << "Changing working directory...\n";
-        } else if (choice == 4) {
-            cout << "Exit.\n";
+        } else if (choice == 4) {	
+            cout << "Press any keyboard to exit.\n";
         } else {
             cout << "Invalid Choice. Please try again.\n";
         }
 
     } while (choice != 4);
+}
 
-    return 0;
+int main () {
+	int choice;
+
+	do {
+		cout << "LIST FILL DETAIL\n";
+		cout << "
+
+
+	
+
+	return 0;
 }
