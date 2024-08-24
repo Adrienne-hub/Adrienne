@@ -2,11 +2,9 @@
 
 using namespace std;
 
-void showMainMenu();
-void showFileDetail();
+void showFileListMenu();
 
 int main() {
-	
     int choice;
 
     do {
@@ -20,39 +18,57 @@ int main() {
         cout << "Enter the Number: ";
         cin >> choice;
 
-        if (choice == 1) {
-            cout << "Displaying list of files...\n";
-        } else if (choice == 2) {
-            cout << "Creating new directory...\n";
-        } else if (choice == 3) {
-            cout << "Changing working directory...\n";
-        } else if (choice == 4) {	
-            cout << "Press any keyboard to exit.\n";
-        } else {
-            cout << "Invalid Choice. Please try again.\n";
+        switch (choice) {
+            case 1:
+                showFileListMenu(); 
+                break;
+            case 2:
+                cout << "Creating new directory...\n";
+                break;
+            case 3:
+                cout << "Changing working directory...\n";
+                break;
+            case 4:
+                cout << "Press any key to exit.\n";
+                break;
+            default:
+                cout << "Invalid Choice. Please try again.\n";
+                break;
         }
 
     } while (choice != 4);
+
+    return 0; 
 }
 
 
-
 void showFileListMenu() {
-	int FileChoice;
+    int fileChoice;
 
-	do {
-		cout << "LIST FILL DETAIL\n";
-		cout << "------------------\n";
-		cout << "1. List All Files\n";
-		cout << "2. List of Extension Files\n";
-		cout << "3. List of Nane Wise\n";
-		cout << "Enter the Number: \n";
-		cin >> choice;
+    do {
+        cout << "LIST FILE DETAIL\n"; 
+        cout << "------------------\n";
+        cout << "1. List All Files\n";
+        cout << "2. List of Extension Files\n";
+        cout << "3. List by Name Wise\n"; 
+        cout << "Enter the Number: ";
+        cin >> fileChoice;
 
-		
+        switch (fileChoice) {
+            case 1:
+                cout << "Listing all files...\n";
+                break;
+            case 2:
+                cout << "Listing files by extension...\n";
+                break;
+            case 3:
+                cout << "Listing files by name...\n";
+                break;
+            default:
+                cout << "Invalid Choice. Please try again.\n";
+                break;
+        }
 
-
-	
-
-	return 0;
+    } while (fileChoice != 3);
+    
 }
