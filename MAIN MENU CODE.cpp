@@ -26,7 +26,7 @@ int main() {
                 showFileListMenu(); 
                 break;
             case 2:
-                showNewDirectory(); // Correctly call showNewDirectory() here
+                showNewDirectory(); 
                 break;
             case 3:
                 cout << "Changing working directory...\n";
