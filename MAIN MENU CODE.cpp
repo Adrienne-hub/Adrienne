@@ -1,8 +1,11 @@
 #include <iostream>
+#include <string>
 
 using namespace std;
 
 void showFileListMenu();
+void showNewDirectory();
+void showChangeWorkingDirectory();
 
 int main() {
     int choice;
@@ -23,7 +26,7 @@ int main() {
                 showFileListMenu(); 
                 break;
             case 2:
-                cout << "Creating new directory...\n";
+                showNewDirectory(); // Correctly call showNewDirectory() here
                 break;
             case 3:
                 cout << "Changing working directory...\n";
@@ -38,14 +41,14 @@ int main() {
 
     } while (choice != 4);
 
-    return 0; 
+    return 0;  
 }
-
 
 void showFileListMenu() {
     int fileChoice;
 
     do {
+    	cout << "\n";
         cout << "LIST FILE DETAIL\n"; 
         cout << "------------------\n";
         cout << "1. List All Files\n";
@@ -56,19 +59,36 @@ void showFileListMenu() {
 
         switch (fileChoice) {
             case 1:
-                cout << "Listing all files...\n";
-                break;
+            	cout << "\n\n";
+                cout << "List of All Files: \n";
+                cout << "file1.txt\n";
+                cout << "file2.cpp\n";
+                cout << "report.doc\n";
+                cout << "image.jpg\n";
+                cout << "\n";
+				cout <<"Total Files: 4\n";
+                cout << "\n";
+				break;
             case 2:
-                cout << "Listing files by extension...\n";
+            	cout << "\n\n";
+                cout << "Listing files by extension...\n";               
                 break;
             case 3:
                 cout << "Listing files by name...\n";
                 break;
             default:
-                cout << "Invalid Choice. Please try again.\n";
+                cout << "Invalid Choice. Please try again.\n";	
                 break;
         }
 
     } while (fileChoice != 3);
-    
+
+} 
+
+void showNewDirectory() {
+    string newDirectory; 
+
+    cout << "\n";
+    cout << "Enter Directory name: ";
+    cin >> newDirectory;
 }
