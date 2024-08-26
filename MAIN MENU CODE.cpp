@@ -1,94 +1,115 @@
 #include <iostream>
+#include <cstdlib>
 #include <string>
 
 using namespace std;
 
-void showFileListMenu();
-void showNewDirectory();
-void showChangeWorkingDirectory();
+void showDirectoryMenu();
+void changeDirectoryMenu();
+void createDirectory();
 
 int main() {
     int choice;
 
     do {
-        cout << "--------------------\n";
-        cout << "MAIN MENU\n";
-        cout << "--------------------\n";
-        cout << "1. To Display List of Files\n";
-        cout << "2. To Create New Directory\n";
-        cout << "3. To Change the Working Directory\n";
-        cout << "4. Exit\n";
-        cout << "Enter the Number: ";
+        cout << "\n----------------\n"
+             << "    MAIN MENU    \n"
+             << "----------------\n"
+             << "1. Display List of Files\n"
+             << "2. Create New Directory\n"
+             << "3. Change Working Directory\n"
+             << "4. Exit\n"
+             << "Enter the number: ";
         cin >> choice;
 
         switch (choice) {
             case 1:
-                showFileListMenu(); 
+                showDirectoryMenu();
                 break;
             case 2:
-                showNewDirectory(); 
+                createDirectory();
                 break;
             case 3:
-                cout << "Changing working directory...\n";
+                changeDirectoryMenu();
                 break;
             case 4:
-                cout << "Press any key to exit.\n";
+                cout << "Exiting the program...\n";
                 break;
             default:
-                cout << "Invalid Choice. Please try again.\n";
-                break;
+                cout << "Invalid choice. Please try again.\n";
         }
-
     } while (choice != 4);
 
-    return 0;  
+    return 0;
 }
 
-void showFileListMenu() {
-    int fileChoice;
+void showDirectoryMenu() {
+    int dirChoice;
+    cout << "\n---------------------\n"
+         << "   LIST FILE DETAIL   \n"
+         << "---------------------\n"
+         << "1. List all Files\n"
+         << "2. List by Extension\n"
+         << "3. List by Name\n"
+         << "Enter the number: ";
+    cin >> dirChoice;
 
-    do {
-    	cout << "\n";
-        cout << "LIST FILE DETAIL\n"; 
-        cout << "------------------\n";
-        cout << "1. List All Files\n";
-        cout << "2. List of Extension Files\n";
-        cout << "3. List by Name Wise\n"; 
-        cout << "Enter the Number: ";
-        cin >> fileChoice;
+    if (dirChoice == 1) {
+        system("dir /a-d");
+    } else if (dirChoice == 2) {
+        string extension;
+        cout << "Enter the file extension (e.g., .txt): ";
+        cin >> extension;
+        system(("dir /a-d *" + extension).c_str());
+    } else if (dirChoice == 3) {
+        string pattern;
+        cout << "Enter the pattern (e.g., *.txt): ";
+        cin >> pattern;
+        system(("dir /a-d " + pattern).c_str());
+    } else {
+        cout << "Invalid choice.\n";
+    }
+}
 
-        switch (fileChoice) {
-            case 1:
-            	cout << "\n\n";
-                cout << "List of All Files: \n";
-                cout << "file1.txt\n";
-                cout << "file2.cpp\n";
-                cout << "report.doc\n";
-                cout << "image.jpg\n";
-                cout << "\n";
-				cout <<"Total Files: 4\n";
-                cout << "\n";
-				break;
-            case 2:
-            	cout << "\n\n";
-                cout << "Listing files by extension...\n";               
-                break;
-            case 3:
-                cout << "Listing files by name...\n";
-                break;
-            default:
-                cout << "Invalid Choice. Please try again.\n";	
-                break;
+void changeDirectoryMenu() {
+    int changeDirChoice;
+    cout << "\n----------------------\n"
+         << "   CHANGE DIRECTORY MENU   \n"
+         << "----------------------\n"
+         << "1. Move to Parent Directory\n"
+         << "2. Move to Root Directory\n"
+         << "3. Move to Specific Directory\n"
+         << "Enter the number: ";
+    cin >> changeDirChoice;
+
+    if (changeDirChoice == 1) {
+        system("cd ..");
+    } else if (changeDirChoice == 2) {
+        system("cd \\");
+    } else if (changeDirChoice == 3) {
+        string directory;
+        cout << "Enter the directory path: ";
+        cin.ignore();  
+        getline(cin, directory);
+        if (system(("cd \"" + directory + "\"").c_str()) == 0) {
+            cout << "Successfully moved to: " << directory << endl;
+        } else {
+            cout << "Failed to move to: " << directory << endl;
         }
+    } else {
+        cout << "Invalid choice.\n";
+    }
+}
 
-    } while (fileChoice != 3);
+void createDirectory() {
+    string directoryName;
+    cout << "Enter the name of the new directory: ";
+    cin.ignore();  
+    getline(cin, directoryName);
 
-} 
-
-void showNewDirectory() {
-    string newDirectory; 
-
-    cout << "\n";
-    cout << "Enter Directory name: ";
-    cin >> newDirectory;
+    if (system(("mkdir \"" + directoryName + "\"").c_str()) == 0) {
+        cout << "Directory created: " << directoryName << endl;
+    } else {
+        cout << "Failed to create directory.\n";
+    }
 }
